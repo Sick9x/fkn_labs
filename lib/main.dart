@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:card_swiper/card_swiper.dart';
+import 'package:card_swiper/card_swiper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Marvel Heroes'),
     );
   }
 }
