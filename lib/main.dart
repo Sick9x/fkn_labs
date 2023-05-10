@@ -13,12 +13,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> nameList = ["Дэдпул", "Железный человек", "Человек-паук", "Тор"];
+  List<String> nameList = ["Deadpool", "Iron man", "Spider man", "Thor"];
   List<String> imageList = [
     "assets/images/deadpool.jpg",
     "assets/images/iron-man.jpg",
     "assets/images/spider-man.jpg",
     "assets/images/thor.jpg"
+  ];
+  List<Color> colorsList = [Colors.red, Colors.yellow,
+    Colors.cyan, Colors.white10
   ];
 
   @override
@@ -37,9 +40,9 @@ class _MyAppState extends State<MyApp> {
         body: Stack(
           children: <Widget>[
             const Padding(
-              padding: EdgeInsets.only(left: 85, top: 3),
+              padding: EdgeInsets.only(left: 100, top: 3),
               child: Text(
-                "Выбери своего героя!",
+                "Choose your hero",
                 style: TextStyle(
                   fontSize: 27,
                   fontWeight: FontWeight.bold,
@@ -57,7 +60,7 @@ class _MyAppState extends State<MyApp> {
                       children: [
                         Image.asset(imageList[index], fit: BoxFit.fill),
                         Container(
-                          color: Colors.white10,
+                          color: colorsList[index],
                           alignment: Alignment.center,
                           child: Text(
                             nameList[index],
