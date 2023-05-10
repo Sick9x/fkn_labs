@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.white30,
         appBar: AppBar(
             titleSpacing: 35,
             centerTitle: true,
