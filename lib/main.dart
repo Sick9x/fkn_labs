@@ -5,64 +5,79 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<String> nameList = ["Дэдпул", "Железный человек", "Человек-паук", "Тор"];
+  List<String> imageList = [
+    "assets/images/deadpool.jpg",
+    "assets/images/iron-man.jpg",
+    "assets/images/spider-man.jpg",
+    "assets/images/thor.jpg"
+  ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Marvel Heroes',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Marvel Heroes'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.indigo,
+        appBar: AppBar(
+            titleSpacing: 35,
+            centerTitle: true,
+            title:
+            Image.asset('assets/images/marvel.png', width: 400, height: 50),
+            backgroundColor: Colors.transparent,
+            elevation: 0),
+        body: Stack(
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            const Padding(
+              padding: EdgeInsets.only(left: 85, top: 3),
+              child: Text(
+                "Выбери своего героя!",
+                style: TextStyle(
+                  fontSize: 27,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Swiper(
+              itemCount: imageList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                    padding: const EdgeInsets.symmetric(vertical: 45),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(imageList[index], fit: BoxFit.fill),
+                        Container(
+                          color: Colors.white10,
+                          alignment: Alignment.center,
+                          child: Text(
+                            nameList[index],
+                            style: const TextStyle(
+                                fontSize: 26,
+                                fontFamily: 'Marvel',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white70),
+                          ),
+                        ),
+                      ],
+                    )
+                );
+              },
+              viewportFraction: 0.8,
+              scale: 0.9,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Бам бам бам',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
