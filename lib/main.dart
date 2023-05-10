@@ -58,7 +58,12 @@ class _MyAppState extends State<MyApp> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(imageList[index], fit: BoxFit.fill),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20), // Image border
+                          child: SizedBox.fromSize(// Image radius
+                            child: Image.asset(imageList[index], fit: BoxFit.fill),
+                          ),
+                        ),
                         Container(
                           color: colorsList[index],
                           alignment: Alignment.center,
@@ -68,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                                 fontSize: 26,
                                 fontFamily: 'Marvel',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white70),
+                                color: Colors.white),
                           ),
                         ),
                       ],
